@@ -1,0 +1,40 @@
+{
+  "name": "bbbb_repo",
+  "version": "1.0.0",
+  "description": "Bird Box Blue Book",
+  "author": "Sahil Gupta <sahil.gupta@aya.yale.edu>",
+  "private": true,
+  "scripts": {
+    "clear": "rm -r dist/*",
+    "html": "mkdir dist; cp src/*.html dist/",
+    "realassets": "mkdir dist/phot/; cp src/phot/* dist/phot/;",
+    "realbuild": "npm run html && npm run realassets; cross-env NODE_ENV=production browserify -g envify src/scriptpost.js | uglifyjs -c warnings=false -m > dist/buildpost.js;",
+    "dev": "npm run realbuild; http-server ./dist",
+    "deploy": "npm run realbuild;"
+  },
+  "dependencies": {
+    "netlify-lambda": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babelify": "^7.2.0",
+    "browserify": "^16.2.3",
+    "browserify-hmr": "^0.3.7",
+    "cross-env": "^1.0.6",
+    "envify": "^3.4.1",
+    "http-server": "^0.11.1",
+    "npm-run-all": "^4.1.5",
+    "uglify-js": "^2.5.0"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}

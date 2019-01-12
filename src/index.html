@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bird Box Blue Book</title>
+    <link rel="canonical" href="https://birdboxbluebook.com">
+    <meta name="description" content="A cool bluebooking tool"/>
+    <meta name="author" content="sahil.gupta@aya.yale.edu" />
+    <meta name="theme-color" content="#000000">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="shortcut icon" href="phot/favicon.png" />
+    <link rel="apple-touch-icon" href="phot/apple-touch-icon.png" />
+
+    <!-- facebook -->
+    <meta property="og:url" content="https://birdboxbluebook.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Bird Box Blue Book">
+    <meta property="og:description" content="A cool bluebooking tool">
+    <meta property="og:updated_time" content="2019-01-01T20:20:20">
+    <meta property="og:image" content="https://birdboxbluebook.com/phot/cover1.jpg">
+    <!-- twitter -->
+    <meta name="twitter:title" content="Bird Box Blue Book">
+    <meta name="twitter:description" content="A cool bluebooking tool">
+    <meta name="twitter:image" content="https://birdboxbluebook.com/phot/cover1.jpg">
+
+    <!-- tachyons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tachyons@4.11.1/css/tachyons.min.css" />
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+    <!-- moment -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- lodash -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+
+    <!-- fullstory -->
+    <script>
+        if (window.location.href.includes('localhost')) {
+            return;
+        }
+
+        window['_fs_debug'] = false;
+        window['_fs_host'] = 'fullstory.com';
+        window['_fs_org'] = 'HQ4BS';
+        window['_fs_namespace'] = 'FS';
+        (function (m, n, e, t, l, o, g, y) {
+            if (e in m) { if (m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'); } return; }
+            g = m[e] = function (a, b, s) { g.q ? g.q.push([a, b, s]) : g._api(a, b, s); }; g.q = [];
+            o = n.createElement(t); o.async = 1; o.src = 'https://' + _fs_host + '/s/fs.js';
+            y = n.getElementsByTagName(t)[0]; y.parentNode.insertBefore(o, y);
+            g.identify = function (i, v, s) { g(l, { uid: i }, s); if (v) g(l, v, s) }; g.setUserVars = function (v, s) { g(l, v, s) }; g.event = function (i, v, s) { g('event', { n: i, p: v }, s) };
+            g.shutdown = function () { g("rec", !1) }; g.restart = function () { g("rec", !0) };
+            g.consent = function (a) { g("consent", !arguments.length || a) };
+            g.identifyAccount = function (i, v) { o = 'account'; v = v || {}; v.acctId = i; g(o, v) };
+            g.clearUserCookie = function () { };
+        })(window, document, window['_fs_namespace'], 'script', 'user');
+    </script>
+
+    <script>
+        console.log('\n\n\nHi there, developers!\nhttps://youtu.be/IhJQp-q1Y1s\n\n\n');
+    </script>
+    <style>
+        html {
+            background-color: #000000;
+        }
+        body {
+            overflow: hidden;
+            font-family: 'helvetica neue', helvetica, 'Archivo', sans-serif;
+            /* font-family: 'Archivo', 'helvetica neue', helvetica, sans-serif; */
+            background-color: #000000;
+        }
+        a-scene { 
+            height: 100vh;
+            width: 100vw;
+            background-color: #000000;
+        }
+        div2 {
+            display: inline-block;
+        }
+
+        .myblue {
+            color: #0987ff;
+        }
+        .bg-my-blue {
+            background-color: #0987ff;
+        }
+
+        .vuepane {
+            border-radius: 1.5rem;
+            box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+        }
+
+        input {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            /* border-bottom: 1.5px solid rgba(16,16,16,.9); */
+            color: #111111;
+            font-family: 'helvetica neue', helvetica, 'Archivo', sans-serif;
+        }
+        ::placeholder {
+            color: #111111;
+            opacity: .2;
+            transition: opacity 0.1s ease-in-out;
+        }
+        .pointer {
+            /* tachyons styles plus this */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+    </style>
+
+
+</head>
+
+<body class="bg-blue">
+
+    <img src="phot/bb1.png" height="200px">
+
+    <article id="vueApp" class="pa4 pa5-ns black">
+
+        <h1 id="spasetitle" class="f1 lh-title mt0 navy">
+            SPASE
+        </h1>
+
+
+        <div>
+
+            <h1 class="f2 lh-title dark-blue mw6">
+                Is it ridiculous that a new calendar could raise your productivity?
+            </h1>
+
+            <h1 class="f3 lh-title light-silver mw55 tjOFF">
+                Spase is a new kind of calendar built by students, for students. It shows time spatially, so you can
+                get
+                work done and look forward to the day.
+            </h1>
+
+            <a href="/app" class="f2 link dim dib b myblue">Start</a>
+
+        </div>
+
+
+    </article>
+
+
+    <!-- ALL VUE -->
+    <div id="groupTL" class="absolute top-1 left-1">
+        <div2 id="vueTitle" class="dn vuepane paneblack pa2">
+            <h1 v-on:click="gohome" class="f6 link dim mv0 pa1 ph2 lh-title pointer"><span class="my-tracking">SPASE</span></h1>
+        </div2>
+        <div2 id="infoDate" class="dn vuepane panewhite   pa2 ml2">
+            <span class="f6 pa1 dib fw5">-</span>
+        </div2>
+    </div>
+
+    <div id="groupTR1" class="absolute top-1 right-1">
+        <div2 id="vueLoginSignup" class="dn vuepane paneblack pa2 fr">
+            <a v-on:click="dologin" class="f6 link dim pa1 dib b pointer">Login</a>
+            <a v-on:click="dosignup" class="f6 link dim ml1 pa1 dib b pointer">Signup</a>
+        </div2>
+        <div></div>
+        <div2 id="vueLogin" class="dn vuepane panewhite   w45 pa2 mt3 fr">
+            <input id="idloginemail" class="f6 b input-reset pa1" type="text" placeholder="Email" v-model="loginemail"
+                @keyup.enter="submitemail">
+            <p id="loginnotif" class="dn   f7 mt2 pa1 mb0">-</p>
+        </div2>
+        <div2 id="vueSignup" class="dn vuepane panewhite  w45 pa3 mt3 fr">
+            <p class="f7 mt0 mb2 near-black">My name</p>
+            <input id="idinputfname" class="f6 mb3 b input-reset" type="text" placeholder="Neil Armstrong" v-model="inputfname">
+            <p class="f7 mt0 mb2 near-black">My quest</p>
+            <input id="idinputquest" class="f6 mb3 b input-reset" type="text" placeholder="Flying to the moon" v-model="inputquest">
+            <p class="f7 mt0 mb2 near-black">My favorite color</p>
+            <a v-on:click="handlecolor('#E7040F', $event)" class="f3 link dim ml0 mr1 dib b dark-red pointer">●</a>
+            <a v-on:click="handlecolor('#FF6300', $event)" class="f3 link dim mr1 dib b orange pointer">●</a>
+            <a v-on:click="handlecolor('#FFD700', $event)" class="f3 link dim mr1 dib b yellow pointer">●</a>
+            <a v-on:click="handlecolor('#19A974', $event)" class="f3 link dim mr1 dib b green pointer">●</a>
+            <a v-on:click="handlecolor('#357EDD', $event)" class="f3 link dim mr1 dib b myblue pointer">●</a>
+            <a v-on:click="handlecolor('#00449E', $event)" class="f3 link dim mr1 dib b dark-blue pointer">●</a>
+            <a v-on:click="handlecolor('#5E2CA5', $event)" class="f3 link dim mr1 dib b purple pointer">●</a>
+            <br>
+            <span v-on:click="activenext = true;" class="f6 mt2 mb0 link dim dib b pointer">Next</span>
+            <div v-if="activenext">
+                <p class="f7 mt3 mb2 near-black">My handle<span id="idhandlenote" v-html="handlenote" class="f7 ml3"></span></p>
+                <input id="idinputnewhandle" class="f6 mb3 b input-reset" type="text" placeholder="@neil" v-model="inputnewhandle">
+                <p class="f7 mt0 mb2 near-black">My email</p>
+                <input id="idinputemailadr" class="f6 mb3 b input-reset" type="email" placeholder="n.armstrong@nasa.gov"
+                    v-model="inputemailadr" @keyup.enter="validateandsignup">
+                <br>
+                <span v-on:click="validateandsignup" class="f6 mv0 link dim dib b pointer">Go</span>
+                <p id="signupnotif" class="dn   f7 mt3 mb0">-</p>
+            </div>
+        </div2>
+    </div>
+
+    <!-- my post scripts -->
+    <script src="buildpost.js"></script>
+
+    <script>
+        var vApp = new Vue({
+            el: '#vueApp'
+        })
+
+        anime({
+            targets: '#spasetitle',
+            letterSpacing: '1.1em',
+            easing: 'easeInOutQuad',
+            duration: 2000,
+            delay: 1000
+        })
+
+    </script>
+
+    <style>
+        body {
+            font-family: 'helvetica neue', helvetica, 'Archivo', sans-serif;
+            /* font-family: 'Archivo', 'helvetica neue', helvetica, sans-serif; */
+        }
+
+        .myblue {
+            color: #0987ff;
+        }
+
+        .bg-my-blue {
+            background-color: #0987ff;
+        }
+
+        .mw55 {
+            max-width: 27rem;
+        }
+
+        #linkapple,
+        #linkgoogle {
+            background-position: left center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            text-indent: -1000em;
+            height: 40px;
+        }
+
+        #linkapple {
+            background-image: url(/phot/storeapple.svg);
+            width: 120px;
+        }
+
+        #linkgoogle {
+            background-image: url(/phot/storegoogle.svg);
+            width: 135px;
+        }
+    </style>
+
+</body>
+
+</html>
