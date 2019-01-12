@@ -99,24 +99,45 @@
     </article>
 
     <article class="pa4 pa5-ns bg-dark-blue">
+        <p class="measure-narrow f4 fw5 lh-copy white">
+            Bird Box Blue Book
+        </p>
         <p class="measure-narrow f4 fw3 lh-copy white">
             Just a small tool to help you bluebook this semester, so that you don't get blindsided, or feel lost
             in zero gravity, in a vast ocean's 8... bird box.....
         </p>
-    </article>
-
-
-    <article id="vueClasses" class="pa4 pa5-ns bg-blue">
         <p class="measure-narrow f4 fw3 lh-copy white">
-            adsf
+            Anyway. This tool helps you
+            <ul class="list pl2 mt2 f4 fw3 lh-copy white">
+                <li>- Search for your courses</li>
+                <li>- Export them to any calendar</li>
+                <li>- Find building names from codes</li>
+            </ul>
         </p>
 
-        <a class="f4 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue" href="#0">Export</a>
+    </article>
+
+    <article id="vueClasses" class="pa4 pa5-ns bg-blue">
+        <p class="measure-narrow f4 fw5 lh-copy white">
+            Search & Export
+        </p>
+
+        <input id="idsearchbar" class="f6 b input-reset v-top pa1" type="text" placeholder="@search" v-model="searchtext"
+            @keyup.enter="gotofirsthandle">
+        <p v-for="searchresult in searchresults" v-on:click="gotohandle(searchresult)" class="f6 link dim mt2 mb0 pa1 fw5 light-silver pointer">
+            {{ searchresult }}
+        </p>
+
+        <a class="f4 fw5 dim no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue">Export</a>
 
     </article>
 
     <article id="vueCodes" class="pa4 pa5-ns bg-light-blue">
-        <p class="measure-narrow f4 fw3 lh-copy navy">
+        <p class="measure-narrow f4 fw5 lh-copy black">
+            Find Building Names
+        </p>
+
+        <p class="measure-narrow f4 fw3 lh-copy black">
             adsf
         </p>
 

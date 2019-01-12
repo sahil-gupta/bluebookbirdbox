@@ -1,7 +1,4 @@
 var logg = console.log;
-var d = document;
-d.f = document.querySelector;
-d.c = document.createElement;
 
 const moment = require('moment');
 const ical = require('ical-generator');
