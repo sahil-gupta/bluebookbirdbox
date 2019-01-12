@@ -6,14 +6,19 @@ d.c = document.createElement;
 
 var _help = require('./_help');
 var _colors = require('./_colors');
-var _timelines = require('./_timelines');
 
 const fireauth = firebase.auth();
 const firestore = firebase.firestore();
 const firefunctions = firebase.functions();
 
+const DAYFLAG = 7;
+const SECONDSINDAY = 86400;
+const TODAY = moment().startOf('day');
+const RANGEFUTURE = TODAY.diff(moment('2020-05-20'), 'days');   // negative number
+const RANGEPAST = TODAY.diff(moment('2019-01-01'), 'days');     // positive number
 
-const IDVUE = '#vueCrud';
+
+// const IDVUE = '#vueApp'; vueClasses Codes
 
 function run() {
     var thevue = new Vue({

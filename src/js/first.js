@@ -8,16 +8,16 @@ const ical = require('ical-generator');
 
 var _help = require('./_help');
 
-var vApp = require('./vueApp');
+var vAll = require('./vues');
 
 exports.allcode = () => {
 
 
     // ALL VUE
-    vApp.run();
+    vAll.run();
 
 
-    
+
     const cal = ical({
         domain: 'sebbo.net',
         prodId: { company: 'superman-industries.com', product: 'ical-generator' },

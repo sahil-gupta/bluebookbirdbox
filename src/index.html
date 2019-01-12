@@ -4,7 +4,7 @@
 <head>
     <title>Bird Box Blue Book</title>
     <link rel="canonical" href="https://birdboxbluebook.com">
-    <meta name="description" content="A bluebooking tool" />
+    <meta name="description" content="Just another tool to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly." />
     <meta name="author" content="sahil@spase.io" />
     <meta name="theme-color" content="#000000">
     <meta charset="utf-8">
@@ -19,12 +19,12 @@
     <meta property="og:url" content="https://birdboxbluebook.com">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bird Box Blue Book">
-    <meta property="og:description" content="A bluebooking tool">
+    <meta property="og:description" content="Just another tool to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly.">
     <meta property="og:updated_time" content="2019-01-01T20:20:20">
     <meta property="og:image" content="https://birdboxbluebook.com/phot/cover1.jpg">
     <!-- twitter -->
     <meta name="twitter:title" content="Bird Box Blue Book">
-    <meta name="twitter:description" content="A bluebooking tool">
+    <meta name="twitter:description" content="Just another tool to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly.">
     <meta name="twitter:image" content="https://birdboxbluebook.com/phot/cover1.jpg">
 
     <!-- tachyons -->
@@ -62,10 +62,8 @@
     </script>
     <style>
         body {
-            /* overflow: hidden; */
             font-family: 'helvetica neue', helvetica, sans-serif;
         }
-
         input {
             border: 0;
             outline: 0;
@@ -79,7 +77,6 @@
             opacity: .2;
             transition: opacity 0.1s ease-in-out;
         }
-
         .pointer {
             /* tachyons styles plus this */
             -webkit-user-select: none;
@@ -93,23 +90,47 @@
 
 </head>
 
-<body class="bg-blue">
+<body>
 
-    <img src="phot/meme1.png" height="200px">
-
-    <article id="vueApp" class="pa4 pa5-ns black">
-        
-        <div>
-            <h1 class="f2 lh-title dark-blue mw6">
-                hello
-            </h1>
-
-            <a href="/app" class="f2 link dim dib b myblue">Start</a>
+    <article class="pa4 pa5-ns bg-navy">
+        <div class="measure">
+            <img src="phot/meme1.png" class="br1" height="300px">
         </div>
+    </article>
 
+    <article class="pa4 pa5-ns bg-dark-blue">
+        <p class="measure-narrow f4 fw3 lh-copy white">
+            Just a small tool to help you bluebook this semester, so that you don't get blindsided, or feel lost
+            in zero gravity, in a vast ocean's 8... bird box.....
+        </p>
+    </article>
+
+
+    <article id="vueClasses" class="pa4 pa5-ns bg-blue">
+        <p class="measure-narrow f4 fw3 lh-copy white">
+            adsf
+        </p>
+
+        <a class="f4 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue" href="#0">Export</a>
+
+    </article>
+
+    <article id="vueCodes" class="pa4 pa5-ns bg-light-blue">
+        <p class="measure-narrow f4 fw3 lh-copy navy">
+            adsf
+        </p>
+
+    </article>
+
+    <article class="pa4 pa5-ns bg-white">
+        <div class="measure">
+            <iframe class="airtable-embed" src="https://airtable.com/embed/shrW14MRxmsxrhPU0?backgroundColor=orange"
+                frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+        </div>
     </article>
 
     <script src="buildpost.js"></script>
 
 </body>
+
 </html>
