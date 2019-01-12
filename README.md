@@ -1,6 +1,6 @@
 # Bird Box Blue Book
 
-A cool bluebooking tool
+A bluebooking tool
 
 `npm run dev`
 
@@ -8,3 +8,4 @@ A cool bluebooking tool
 adjust index
 adjust photos
 facebook optimize
+make something worth screenshotting

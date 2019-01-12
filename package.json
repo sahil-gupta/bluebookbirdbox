@@ -13,6 +13,9 @@
     "deploy": "npm run realbuild;"
   },
   "dependencies": {
+    "ical-generator": "^1.4.3",
+    "moment": "^2.23.0",
+    "moment-timezone": "^0.5.23",
     "netlify-lambda": "^1.2.0"
   },
   "devDependencies": {
