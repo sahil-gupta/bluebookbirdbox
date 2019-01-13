@@ -54,7 +54,7 @@ function run() {
         data: {
             searchtext: '',
             searchresults: [],
-            chosens: ['abc','def','ghi']
+            chosens: []
         },
         methods: {
             dosearch: function () {
@@ -63,24 +63,36 @@ function run() {
                 }
 
                 var self = this;
-
                 index.search(this.searchtext, function (err, content) {
                     self.searchresults = [];
                     for (var i = 0; i < content.hits.length; i++) {
                         var row = content.hits[i];
-                        self.searchresults.push(row.Code + ' / ' + row.Building)
+                        self.searchresults.push(row)
                     }
                 });
             },
-            chooseresult: function (thehandle) {
-                window.location.href = '/' + thehandle.substring(1);
+            chooseresult: function (theresult) {
+                this.chosens.push(theresult);
+                this.chosens = _.uniqBy(this.chosens, 'objectID');
             },
             choosefirstresult: function () {
                 if (this.searchresults.length === 0) {
                     return;
                 }
-                window.location.href = '/' + this.searchresults[0].substring(1);
+                var theresult = this.searchresults[0];
+                this.chosens.push(theresult);
+                this.chosens = _.uniqBy(this.chosens, 'objectID');
             },
+            removechosen: function(chosen) {
+                _.remove(this.chosens, function (anything) {
+                    return anything.objectID === chosen.objectID;
+                });
+                this.chosens.push('');
+                this.chosens.pop(-1);
+            },
+            exportics: function() {
+                logg('asdjflksdjflkasjlkjk');
+            }
         },
         watch: {
             searchtext: function (newval, oldval) {
