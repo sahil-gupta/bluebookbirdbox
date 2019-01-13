@@ -1,8 +1,7 @@
-var logg = console.log;
+const logg = console.log;
 
-var client = algoliasearch('KRM1S7DDHX', 'f109d17791c3399d3d83ed3848d230d4');
-var index = client.initIndex('code_building');
-
+const client = algoliasearch('KRM1S7DDHX', 'f109d17791c3399d3d83ed3848d230d4');
+const index = client.initIndex('code_building');
 
 function run() {
     var thevue = new Vue({

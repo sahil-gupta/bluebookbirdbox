@@ -1,4 +1,7 @@
-var logg = console.log;
+const logg = console.log;
+
+const client = algoliasearch('KRM1S7DDHX', 'f109d17791c3399d3d83ed3848d230d4');
+const index = client.initIndex('spring_classes');
 
 const ical = require('ical-generator');
 const moment = require('moment');
@@ -8,7 +11,6 @@ const TODAY = moment().startOf('day');
 const RANGEFUTURE = TODAY.diff(moment('2020-05-20'), 'days');   // negative number
 const RANGEPAST = TODAY.diff(moment('2019-01-01'), 'days');     // positive number
 
-
 function localstorage(key, value) {
     if (value === undefined) {
         var value = window.localStorage.getItem(key);
@@ -16,9 +18,6 @@ function localstorage(key, value) {
     }
     window.localStorage.setItem(key, JSON.stringify(value));
 }
-
-
-
 
 // const cal = ical({
 //     domain: 'sebbo.net',
@@ -54,7 +53,8 @@ function run() {
         el: '#vueClasses',
         data: {
             searchtext: '',
-            searchresults: []
+            searchresults: [],
+            chosens: ['abc','def','ghi']
         },
         methods: {
             dosearch: function () {

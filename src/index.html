@@ -69,7 +69,6 @@
             outline: 0;
 
             border-radius: 2rem;
-            box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
         }
         ::placeholder {
             color: #526f81;
@@ -101,15 +100,15 @@
         <p class="measure-narrow f2 fw5 lh-copy mt0">
             Bird Box Blue Book
         </p>
-        <p class="measure-narrow f3 fw3 lh-copy">
-            Just another website to help you bluebook this semester, so that you don't get <i>blind-sided</i>, or feel
+        <p class="measure-narrow f5 fw3 lh-copy">
+            A tiny site to help you bluebook this semester, so you don't get <i>blind-sided</i>, or feel
             lost
             without <i>gravity</i>, in a vast <i>ocean's 8</i>... <i>bird box</i>.....
         </p>
         <p class="measure-narrow f3 fw3 lh-copy">
-            Anyway. On this site you can
-            <ul class="list pl2 mt2 f3 fw3 lh-copy white">
-                <li>&#9679; Search for your courses <b>(ENGL 120)</b></li>
+            <i>"So what can I do on this site?"</i>
+            <ul class="list pl4 mt2 f4 fw3 lh-copy white">
+                <li>&#9679; Search for courses <b>(ENGL 120)</b></li>
                 <li>&#9679; Export them to any calendar <b>(GCal, iCal)</b></li>
                 <li>&#9679; Get building names from codes <b>(KBT)</b></li>
             </ul>
@@ -121,14 +120,25 @@
             Search & Export
         </p>
 
-        <input id="idsearchbar" class="f6 b input-reset pa3 helvetica dark-blue bg-near-white" type="text" placeholder="ENGL 120" v-model="searchtext" @keyup.enter="choosefirstresult">
+        <input id="idsearchbar" class="f6 b input-reset pa3 helvetica dark-blue bg-near-white shadow-4" type="text"
+            placeholder="ENGL 120" v-model="searchtext" @keyup.enter="choosefirstresult">
 
-        <p v-for="searchresult in searchresults" class="f4 mt3 mb0 pa2 fw6 link dim pointer" v-on:click="chooseresult(searchresult)">
-            {{ searchresult }}
-        </p>
+        <div></div>
 
-        <a class="f4 fw5 grow no-underline br-pill ph3 pv2 mb2 dib bg-dark-blue pointer">Export</a>
+        <div class="dib v-top w-40">
 
+            <p v-for="searchresult in searchresults" class="f4 mt2 mb0 pa2 fw6 link dim pointer" v-on:click="chooseresult(searchresult)">
+                {{ searchresult }}
+            </p>
+        </div>
+
+        <div class="dib v-top w-40 bl bw2 pl4 pv2 mt5">
+            <p v-for="chosen in chosens" class="f4 mt0 mb2 pa2 fw6">
+                {{ chosen }}
+            </p>
+
+            <a class="f4 fw5 grow no-underline br-pill ph3 pv2 dib bg-green pointer shadow-4">Export</a>
+        </div>
     </article>
 
     <article id="vueCodes" class="pa4 pa5-ns bg-light-blue dark-blue">
@@ -136,10 +146,10 @@
             Get Building Names
         </p>
 
-        <input id="idsearchbar" class="f6 b input-reset pa3 helvetica dark-blue bg-near-white" type="text" placeholder="KBT"
-            v-model="searchtext">
+        <input id="idsearchbar" class="f6 b input-reset pa3 helvetica dark-blue bg-near-white shadow-4" type="text"
+            placeholder="KBT" v-model="searchtext">
 
-        <p v-for="searchresult in searchresults" class="f4 mt3 mb0 pa2 fw6">
+        <p v-for="searchresult in searchresults" class="f4 mt2 mb0 pa2 fw6">
             {{ searchresult }}
         </p>
     </article>
