@@ -4,7 +4,7 @@
 <head>
     <title>Bird Box Blue Book</title>
     <link rel="canonical" href="https://birdboxbluebook.com">
-    <meta name="description" content="Just another tool to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly." />
+    <meta name="description" content="Just another website to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly." />
     <meta name="author" content="sahil@spase.io" />
     <meta name="theme-color" content="#000000">
     <meta charset="utf-8">
@@ -19,12 +19,12 @@
     <meta property="og:url" content="https://birdboxbluebook.com">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bird Box Blue Book">
-    <meta property="og:description" content="Just another tool to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly.">
+    <meta property="og:description" content="Just another website to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly.">
     <meta property="og:updated_time" content="2019-01-01T20:20:20">
     <meta property="og:image" content="https://birdboxbluebook.com/phot/cover1.jpg">
     <!-- twitter -->
     <meta name="twitter:title" content="Bird Box Blue Book">
-    <meta name="twitter:description" content="Just another tool to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly.">
+    <meta name="twitter:description" content="Just another website to help bluebooking be less terrifying. Export your courses to your calendar as an .ics with one click, and search for building codes quickly.">
     <meta name="twitter:image" content="https://birdboxbluebook.com/phot/cover1.jpg">
 
     <!-- tachyons -->
@@ -35,6 +35,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- lodash -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+
+    <!-- algolia -->
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 
     <!-- fullstory -->
     <script>
@@ -61,20 +64,16 @@
         console.log('\n\n\nHi there, developers!\nhttps://youtu.be/IhJQp-q1Y1s\n\n\n');
     </script>
     <style>
-        body {
-            font-family: 'helvetica neue', helvetica, sans-serif;
-        }
         input {
             border: 0;
             outline: 0;
-            background: transparent;
-            /* border-bottom: 1.5px solid rgba(16,16,16,.9); */
-            color: #111111;
-            font-family: 'helvetica neue', helvetica, sans-serif;
+
+            border-radius: 2rem;
+            box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
         }
         ::placeholder {
-            color: #111111;
-            opacity: .2;
+            color: #526f81;
+            opacity: .3;
             transition: opacity 0.1s ease-in-out;
         }
         .pointer {
@@ -90,7 +89,7 @@
 
 </head>
 
-<body>
+<body class="helvetica">
 
     <article class="pa4 pa5-ns bg-navy">
         <div class="measure">
@@ -98,52 +97,54 @@
         </div>
     </article>
 
-    <article class="pa4 pa5-ns bg-dark-blue">
-        <p class="measure-narrow f4 fw5 lh-copy white">
+    <article class="pa4 pa5-ns bg-dark-blue white">
+        <p class="measure-narrow f2 fw5 lh-copy mt0">
             Bird Box Blue Book
         </p>
-        <p class="measure-narrow f4 fw3 lh-copy white">
-            Just a small tool to help you bluebook this semester, so that you don't get blindsided, or feel lost
-            in zero gravity, in a vast ocean's 8... bird box.....
+        <p class="measure-narrow f3 fw3 lh-copy">
+            Just another website to help you bluebook this semester, so that you don't get <i>blind-sided</i>, or feel
+            lost
+            without <i>gravity</i>, in a vast <i>ocean's 8</i>... <i>bird box</i>.....
         </p>
-        <p class="measure-narrow f4 fw3 lh-copy white">
-            Anyway. This tool helps you
-            <ul class="list pl2 mt2 f4 fw3 lh-copy white">
-                <li>- Search for your courses</li>
-                <li>- Export them to any calendar</li>
-                <li>- Find building names from codes</li>
+        <p class="measure-narrow f3 fw3 lh-copy">
+            Anyway. On this site you can
+            <ul class="list pl2 mt2 f3 fw3 lh-copy white">
+                <li>&#9679; Search for your courses <b>(ENGL 120)</b></li>
+                <li>&#9679; Export them to any calendar <b>(GCal, iCal)</b></li>
+                <li>&#9679; Get building names from codes <b>(KBT)</b></li>
             </ul>
         </p>
-
     </article>
 
-    <article id="vueClasses" class="pa4 pa5-ns bg-blue">
-        <p class="measure-narrow f4 fw5 lh-copy white">
+    <article id="vueClasses" class="pa4 pa5-ns bg-blue white">
+        <p class="measure-narrow f2 fw5 lh-copy mt0">
             Search & Export
         </p>
 
-        <input id="idsearchbar" class="f6 b input-reset v-top pa1" type="text" placeholder="@search" v-model="searchtext"
-            @keyup.enter="gotofirsthandle">
-        <p v-for="searchresult in searchresults" v-on:click="gotohandle(searchresult)" class="f6 link dim mt2 mb0 pa1 fw5 light-silver pointer">
+        <input id="idsearchbar" class="f6 b input-reset pa3 helvetica dark-blue bg-near-white" type="text" placeholder="ENGL 120" v-model="searchtext" @keyup.enter="choosefirstresult">
+
+        <p v-for="searchresult in searchresults" class="f4 mt3 mb0 pa2 fw6 link dim pointer" v-on:click="chooseresult(searchresult)">
             {{ searchresult }}
         </p>
 
-        <a class="f4 fw5 dim no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue">Export</a>
+        <a class="f4 fw5 grow no-underline br-pill ph3 pv2 mb2 dib bg-dark-blue pointer">Export</a>
 
     </article>
 
-    <article id="vueCodes" class="pa4 pa5-ns bg-light-blue">
-        <p class="measure-narrow f4 fw5 lh-copy black">
-            Find Building Names
+    <article id="vueCodes" class="pa4 pa5-ns bg-light-blue dark-blue">
+        <p class="measure-narrow f2 fw5 lh-copy mt0">
+            Get Building Names
         </p>
 
-        <p class="measure-narrow f4 fw3 lh-copy black">
-            adsf
-        </p>
+        <input id="idsearchbar" class="f6 b input-reset pa3 helvetica dark-blue bg-near-white" type="text" placeholder="KBT"
+            v-model="searchtext">
 
+        <p v-for="searchresult in searchresults" class="f4 mt3 mb0 pa2 fw6">
+            {{ searchresult }}
+        </p>
     </article>
 
-    <article class="pa4 pa5-ns bg-white">
+    <article class="pa4 pa5-ns bg-near-white">
         <div class="measure">
             <iframe class="airtable-embed" src="https://airtable.com/embed/shrW14MRxmsxrhPU0?backgroundColor=orange"
                 frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
