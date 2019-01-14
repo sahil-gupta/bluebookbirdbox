@@ -135,7 +135,14 @@
                 {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
             </p>
             <a v-if="chosens.length>0" id="exportbutton" class="f5 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
-            <span v-else class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-moon-gray white pointer shadow-4 ml2" v-on:click="emptyexport">Export Cal</span>
+            <div v-else>
+                <p class="f5 mt0 mb2 pa2 fw6 moon-gray">
+                (No classes added yet)
+                </p>
+                <span class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-moon-gray white pointer shadow-4 ml2"
+                    v-on:click="emptyexport">Export Cal</span>
+            </div>
+            
         </div>
     </article>
 
