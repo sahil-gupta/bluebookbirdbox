@@ -59,9 +59,11 @@ function run() {
                 this.chosens.pop(-1);
                 localstorage('bbbb_classes', this.chosens);
             },
+            emptyexport: function () {
+                alert("Don't forget to add at least 1 class!");
+            },
             exportics: function () {
                 if (!this.chosens.length) {
-                    alert("Don't forget to add at least 1 class!");
                     return;
                 }
 
