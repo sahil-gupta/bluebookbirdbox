@@ -92,13 +92,13 @@
 
 <body class="helvetica">
 
-    <article class="pa4 pa5-ns bg-navy">
+    <article class="pa4 pa5-ns bg-dark-blue">
         <div class="measure">
             <img src="phot/meme1.png" class="br1 shadow-4 w-100">
         </div>
     </article>
 
-    <article class="pa4 pa5-ns bg-dark-blue white">
+    <article class="pa4 pa5-ns pt0 pt0-ns bg-dark-blue white">
         <p class="measure-narrow f2 lh-copy mt0 b">
             Bird Box Blue Book
         </p>
@@ -136,12 +136,12 @@
             <p v-for="r2 in chosens" class="f5 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
                 {{ r2.subject + ' ' + r2.number }}
             </p>
-            <a v-if="chosens.length>0" id="exportbutton" class="f5 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
+            <a v-if="chosens.length>0" id="exportbutton" class="f5 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2OFF" v-on:click="exportics">Export Cal</a>
             <div v-else>
                 <p class="f5 mt0 mb2 pa2 fw6 light-gray">
                 (No classes added yet)
                 </p>
-                <span class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-moon-gray white pointer shadow-4 ml2"
+                <span class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-moon-gray white pointer shadow-4 ml2OFF"
                     v-on:click="emptyexport">Export Cal</span>
             </div>
             
@@ -164,7 +164,7 @@
     <article class="pa4 pa5-ns bg-near-white">
         <div class="measure">
             <iframe class="airtable-embed" src="https://airtable.com/embed/shrW14MRxmsxrhPU0?backgroundColor=orange"
-                frameborder="0" onmousewheel="" width="100%" style="background: transparent; border: 1px solid #ccc; height:20em;"></iframe>
+                frameborder="0" onmousewheel="" width="100%" style="background: transparent; border: 1px solid #ccc; height:30em;"></iframe>
         </div>
 
         <p class="navy mt3 f7">Made without 😴 in New Haven. Special thanks to the creators of CourseTable.</p>
