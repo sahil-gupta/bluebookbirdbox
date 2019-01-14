@@ -134,7 +134,7 @@
         </div>
 
         <div class="dib v-top w-40 bl bw2 pl4 pv2 mt3">
-            <p v-for="r2 in chosens" class="f4 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
+            <p v-for="r2 in chosens" class="f4 mt0 mb2 pa2 fw6 link dim pointer light-green" v-on:click="removechosen(r2)">
                 {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
             </p>
             <a id="exportbutton" class="f4 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
