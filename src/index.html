@@ -101,17 +101,13 @@
             Bird Box Blue Book
         </p>
         <p class="measure-narrow f6 fw3 lh-copy tracked">
-            A tiny site to help you bluebook this semester, 
-            so you don't get <i>blind-sided</i>, 
-            or feel lost without <i>gravity</i>, 
-            in a vast <i>ocean's... 8</i>.... <i>bird box</i>......
+            A tiny site to save you time
         </p>
         <p class="measure-narrow f3 fw4 lh-copy">
-            <i>So what can I do on this site?</i>
-            <ul class="list pl0 mt2 f4 fw3 lh-copy white">
-                <li>&#9679; Search for your courses <b>(ENGL 120)</b></li>
-                <li>&#9679; Export to your calendar <b>(GCal, iCal)</b></li>
-                <li>&#9679; Get building names from codes <b>(KBT)</b></li>
+            <ul class="list pl0 mt2 fw3 lh-copy white">
+                <li>&#9679; searching for courses <b>(ENGL 120)</b></li>
+                <li>&#9679; exporting them to your calendar <b>(GCal, iCal)</b></li>
+                <li>&#9679; getting building names from codes <b>(KBT)</b></li>
             </ul>
         </p>
     </article>
@@ -127,17 +123,17 @@
         <div></div>
 
         <div class="dib v-top w-40">
-            <p v-for="r1 in searchresults" class="f4 mt2 mb0 pa2 fw6 link dim pointer" v-on:click="chooseresult(r1)">
+            <p v-for="r1 in searchresults" class="f5 mt2 mb0 pa2 fw6 link dim pointer" v-on:click="chooseresult(r1)">
                 {{ [r1.subject + ' ' + r1.number + ' (' + r1.section + ')', r1.long_title, r1.professors.join(', ')].join(' / ') }}
             </p>
         </div>
 
         <div class="dib v-top w-40 bl bw2 pl4 pv2 mt3">
-            <p v-for="r2 in chosens" class="f4 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
+            <p v-for="r2 in chosens" class="f5 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
                 {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
             </p>
-            <a v-if="chosens.length>0" id="exportbutton" class="f4 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
-            <span v-else class="exportbutton2 f4 b grow no-underline br-pill ph3 pv2 dib bg-light-green white pointer shadow-4 ml2" v-on:click="emptyexport">Export Cal</span>
+            <a v-if="chosens.length>0" id="exportbutton" class="f5 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
+            <span v-else class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-light-green white pointer shadow-4 ml2" v-on:click="emptyexport">Export Cal</span>
         </div>
     </article>
 
@@ -149,7 +145,7 @@
         <input id="idsearchbar" class="f6 b input-reset pa3 mb2 helvetica dark-blue bg-near-white shadow-4" type="text"
             placeholder="KBT" v-model="searchtext">
 
-        <p v-for="searchresult in searchresults" class="f4 mt2 mb0 pa2 fw6">
+        <p v-for="searchresult in searchresults" class="f5 mt2 mb0 pa2 fw6">
             {{ searchresult }}
         </p>
     </article>
