@@ -14,7 +14,6 @@ function localstorage(key, value) {
     window.localStorage.setItem(key, JSON.stringify(value));
 }
 
-
 function run() {
     var thevue = new Vue({
         el: '#vueClasses',
@@ -52,75 +51,67 @@ function run() {
                 this.chosens = _.uniqBy(this.chosens, 'objectID');
                 localstorage('bbbb_classes', this.chosens);
             },
-            removechosen: function (chosen) {
+            removechosen: function (ch) {
                 _.remove(this.chosens, function (anything) {
-                    return anything.objectID === chosen.objectID;
+                    return anything.objectID === ch.objectID;
                 });
                 this.chosens.push('');
                 this.chosens.pop(-1);
                 localstorage('bbbb_classes', this.chosens);
             },
             exportics: function () {
+                var cal = ical({
+                    domain: 'birdboxbluebook.com',
+                    prodId: { company: 'BBBB', product: 'BBBB' },
+                    name: 'BBBB',
+                    floating: true
+                });
+
+                const DATEA = moment('2019-01-14');
+                const DATEB = moment('2019-04-26');
+                const DIFF = 102;
+
+                for (var i = 0; i <= DIFF; i++) {
+                    var thisdate = DATEA.clone().add(i, 'days');
+                    var dayofweek = thisdate.format('dddd');
+
+                    for (var j = 0; j < this.chosens.length; j++) {
+
+                        var RR = this.chosens[j];
+
+                        var timesbyday = RR.timesbyday;
+
+                        if (dayofweek in timesbyday) {
+                            
+                        }
+
+                        var thislocation = 'asdf';
+                        var thisstart;
+                        var thisend;
+
+                        cal.createEvent({
+                            start: thistart,
+                            end: thisend,
+                            timestamp: moment(),
+                            summary: [RR.subject, RR.number].join(' '),
+                            description: [RR.long_title, RR.subject + ' ' + RR.number + ' (' + RR.section + ')', RR.professors.join(', '), RR.description].join(' / '),
+                            location: thislocation,
+                            allDay: false
+                        });
+                    }
+                }
 
                 // for every day in teh semester
                 //   loop through all the classes
                 //   check if it's supposed to be on that day
                 //   if it is and there are no edge cases
-                        // add it including all details
+                // add it including all details
                 // add all the special holidays
-                // download the ICS
-
-                const TODAY = moment().startOf('day');
-                const RANGEFUTURE = TODAY.diff(moment('2020-05-20'), 'days');   // negative number
-                
-                // Create new Calendar and set optional fields
-                var cal = ical({
-                    domain: 'sebbo.net',
-                    name: 'My Testfeed',
-                    timezone: 'America/New_York'
-                });
-
-                // create a new event
-                var event = cal.createEvent({
-                    start: moment(),
-                    end: moment().add(1, 'hour'),
-                    timestamp: moment(),
-                    summary: 'My Event',
-                    organizer: 'Sebastian Pekarek <mail@example.com>'
-                });
-
-                // like above, you can also set/change values like this…
-                event.summary('My Super Mega Awesome Event');
-
-                // get the iCal string
-                var temp = cal.toString();
-                temp = temp.replace(/(?:\r\n|\r|\n)/g, '%0A');
-                logg(temp)
 
 
-                // const cal = ical({
-                //     domain: 'spase.io',
-                //     name: 'Spase Time',
-                //     timezone: 'America/New_York'
-                // });
-                // const event = cal.createEvent({
-                //     start: moment(),
-                //     end: moment().add(1, 'hour'),
-                //     timestamp: moment(),
-                //     summary: 'Example Event',
-                //     description: 'It works ;)',
-                //     location: 'my room',
-                //     url: 'https://spase.io',
-                //     organizer: 'Sebastian Pekarek <mail@example.com>'
-                // });
-                // // like above, you can also set/change values like this…
-                // event.summary('My Super Mega Awesome Event');
-                // // get the iCal string
-                // logg(cal.toString());
-
-                // // %0A
-                
-                $('#exportbutton').attr('href', 'data:text/calendar;charset=utf8,' + temp);
+                var calstring = cal.toString();
+                calstring = calstring.replace(/(?:\r\n|\r|\n)/g, '%0A');
+                $('#exportbutton').attr('href', 'data:text/calendar;charset=utf8,' + calstring);
             }
         },
         watch: {
