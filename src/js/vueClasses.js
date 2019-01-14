@@ -60,6 +60,11 @@ function run() {
                 localstorage('bbbb_classes', this.chosens);
             },
             exportics: function () {
+                if (!this.chosens.length) {
+                    alert("Don't forget to add at least 1 class!");
+                    return;
+                }
+
                 var cal = ical({
                     domain: 'birdboxbluebook.com',
                     prodId: { company: 'BBBB', product: 'BBBB' },

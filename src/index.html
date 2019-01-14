@@ -100,17 +100,17 @@
         <p class="measure-narrow f2 lh-copy mt0 b">
             Bird Box Blue Book
         </p>
-        <p class="measure f5 fw3 lh-copy tracked">
-            A tiny site to help you bluebook this semester,<br>
-            so you don't get <i>blind-sided</i>,<br>
-            or feel lost without <i>gravity</i>,<br>
-            in a vast <i>ocean's 8</i>...<br>
+        <p class="measure-narrow f6 fw3 lh-copy tracked">
+            A tiny site to help you bluebook this semester, 
+            so you don't get <i>blind-sided</i>, 
+            or feel lost without <i>gravity</i>, 
+            in a vast <i>ocean's... 8</i>... 
             ... <i>bird box</i>......
         </p>
         <p class="measure-narrow f3 fw4 lh-copy">
             <i>So what can I do on this site?</i>
             <ul class="list pl0 mt2 f4 fw3 lh-copy white">
-                <li>&#9679; Search for courses <b>(ENGL 120)</b></li>
+                <li>&#9679; Search for your courses <b>(ENGL 120)</b></li>
                 <li>&#9679; Export to your calendar <b>(GCal, iCal)</b></li>
                 <li>&#9679; Get building names from codes <b>(KBT)</b></li>
             </ul>
@@ -137,7 +137,7 @@
             <p v-for="r2 in chosens" class="f4 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
                 {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
             </p>
-            <a id="exportbutton" class="f4 b grow no-underline br-pill ph3 pv2 dib bg-orange white pointer shadow-4" v-on:click="exportics">Export</a>
+            <a id="exportbutton" class="f4 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
         </div>
     </article>
 
@@ -157,7 +157,7 @@
     <article class="pa4 pa5-ns bg-near-white">
         <div class="measure">
             <iframe class="airtable-embed" src="https://airtable.com/embed/shrW14MRxmsxrhPU0?backgroundColor=orange"
-                frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                frameborder="0" onmousewheel="" width="100%" style="background: transparent; border: 1px solid #ccc; height:20em;"></iframe>
         </div>
 
         <p class="navy mt3 f7">Made without 😴 in New Haven. Special thanks to the creators of CourseTable.</p>
