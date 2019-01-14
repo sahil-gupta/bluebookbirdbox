@@ -40,6 +40,18 @@ function run() {
         mounted: function () {
             this.debounceddosearch = _.debounce(this.dosearch, 500);
 
+            var typed = new Typed('#idsearchcodes', {
+                strings: ['kbt','sss','yk220','my', 'wlh','dmca','luce','akw','wts','wh221','smh'],
+                typeSpeed: 100,
+                backSpeed: 50,
+                backDelay: 1000,
+                startDelay: 500,
+                showCursor: false,
+                smartBackspace: false,
+                shuffle: false,
+                attr: 'placeholder',
+                loop: true
+            });
         }
     });
     return thevue;

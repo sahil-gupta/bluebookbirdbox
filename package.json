@@ -7,7 +7,7 @@
   "scripts": {
     "clear": "rm -r dist/*",
     "html": "mkdir dist; cp src/*.html dist/",
-    "realassets": "mkdir dist/phot/; cp src/phot/* dist/phot/;",
+    "realassets": "mkdir dist/phot/; cp src/phot/* dist/phot/; cp src/modded*.js dist/",
     "realbuild": "npm run html && npm run realassets; cross-env NODE_ENV=production browserify -g envify src/scriptpost.js | uglifyjs -c warnings=false -m > dist/buildpost.js;",
     "dev": "npm run realbuild; http-server ./dist",
     "deploy": "npm run realbuild;"

@@ -159,6 +159,19 @@ function run() {
             this.chosens = localstorage('bbbb_classes') || [];
             this.debounceddosearch = _.debounce(this.dosearch, 500);
 
+
+            var typed = new Typed('#idsearchclasses', {
+                strings: ['engl 120', 'math 240', 'shelly kagan', 'microecon', 'italian II', 'charles hill', 'cpsc 223', 'political thought', 'marvin chun', 'plsc 151', 's&ds 500', 'yale and america'],
+                typeSpeed: 100,
+                backSpeed: 50,
+                backDelay: 1000,
+                startDelay: 500,
+                showCursor: false,
+                smartBackspace: false,
+                shuffle: false,
+                attr: 'placeholder',
+                loop: true
+            });
         }
     });
     return thevue;

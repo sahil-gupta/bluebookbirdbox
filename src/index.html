@@ -35,6 +35,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- lodash -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="moddedTyped.js"></script>
+
 
     <!-- algolia -->
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
@@ -117,7 +119,7 @@
             Search & Export
         </p>
 
-        <input id="idsearchbar" class="f6 b input-reset pa3 mb2 helvetica dark-blue bg-near-white shadow-4" type="text"
+        <input id="idsearchclasses" class="f6 b input-reset pa3 mb2 helvetica dark-blue bg-near-white shadow-4" type="text"
             placeholder="ENGL 120" v-model="searchtext" @keyup.enter="choosefirstresult">
 
         <div></div>
@@ -133,7 +135,7 @@
                 {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
             </p>
             <a v-if="chosens.length>0" id="exportbutton" class="f5 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
-            <span v-else class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-light-green white pointer shadow-4 ml2" v-on:click="emptyexport">Export Cal</span>
+            <span v-else class="exportbutton2 f5 b grow no-underline br-pill ph3 pv2 dib bg-moon-gray white pointer shadow-4 ml2" v-on:click="emptyexport">Export Cal</span>
         </div>
     </article>
 
@@ -142,7 +144,7 @@
             Get Building Names
         </p>
 
-        <input id="idsearchbar" class="f6 b input-reset pa3 mb2 helvetica dark-blue bg-near-white shadow-4" type="text"
+        <input id="idsearchcodes" class="f6 b input-reset pa3 mb2 helvetica dark-blue bg-near-white shadow-4" type="text"
             placeholder="KBT" v-model="searchtext">
 
         <p v-for="searchresult in searchresults" class="f5 mt2 mb0 pa2 fw6">
