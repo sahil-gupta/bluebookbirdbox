@@ -62,37 +62,65 @@ function run() {
             },
             exportics: function () {
 
+                // for every day in teh semester
+                //   loop through all the classes
+                //   check if it's supposed to be on that day
+                //   if it is and there are no edge cases
+                        // add it including all details
+                // add all the special holidays
+                // download the ICS
 
                 const TODAY = moment().startOf('day');
                 const RANGEFUTURE = TODAY.diff(moment('2020-05-20'), 'days');   // negative number
-                const RANGEPAST = TODAY.diff(moment('2019-01-01'), 'days');     // positive number
+                
+                // Create new Calendar and set optional fields
+                var cal = ical({
+                    domain: 'sebbo.net',
+                    name: 'My Testfeed',
+                    timezone: 'America/New_York'
+                });
+
+                // create a new event
+                var event = cal.createEvent({
+                    start: moment(),
+                    end: moment().add(1, 'hour'),
+                    timestamp: moment(),
+                    summary: 'My Event',
+                    organizer: 'Sebastian Pekarek <mail@example.com>'
+                });
+
+                // like above, you can also set/change values like this…
+                event.summary('My Super Mega Awesome Event');
+
+                // get the iCal string
+                var temp = cal.toString();
+                temp = temp.replace(/(?:\r\n|\r|\n)/g, '%0A');
+                logg(temp)
+
 
                 // const cal = ical({
-                //     domain: 'sebbo.net',
-                //     prodId: { company: 'superman-industries.com', product: 'ical-generator' },
-                //     name: 'My Testfeed',
-                //     timezone: 'Europe/Berlin'
+                //     domain: 'spase.io',
+                //     name: 'Spase Time',
+                //     timezone: 'America/New_York'
                 // });
-                // // You can also set values like this…
-                // cal.domain('sebbo.net');
-                // // … or get values
-                // logg(cal.domain()); // --> "sebbo.net"
-                // // create a new event
-                // logg(moment())
-                // logg('this')
                 // const event = cal.createEvent({
                 //     start: moment(),
                 //     end: moment().add(1, 'hour'),
                 //     timestamp: moment(),
-                //     summary: 'My Event',
+                //     summary: 'Example Event',
+                //     description: 'It works ;)',
+                //     location: 'my room',
+                //     url: 'https://spase.io',
                 //     organizer: 'Sebastian Pekarek <mail@example.com>'
                 // });
                 // // like above, you can also set/change values like this…
                 // event.summary('My Super Mega Awesome Event');
                 // // get the iCal string
                 // logg(cal.toString());
-                // logg('hereee')
 
+                // // %0A
+                
+                $('#exportbutton').attr('href', 'data:text/calendar;charset=utf8,' + temp);
             }
         },
         watch: {
@@ -106,7 +134,7 @@ function run() {
             }
         },
         mounted: function () {
-            this.chosens = localstorage('bbbb_classes');
+            this.chosens = localstorage('bbbb_classes') || [];
             this.debounceddosearch = _.debounce(this.dosearch, 500);
 
         }

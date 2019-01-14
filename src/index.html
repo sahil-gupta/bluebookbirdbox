@@ -133,10 +133,10 @@
         </div>
 
         <div class="dib v-top w-40 bl bw2 pl4 pv2 mt3">
-            <p v-for="r2 in chosens" class="f4 mt0 mb2 pa2 fw6 link dim pointer light-blue" v-on:click="removechosen(r2)">
+            <p v-for="r2 in chosens" class="f4 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
                 {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
             </p>
-            <a class="f4 fw5 grow no-underline br-pill ph3 pv2 dib bg-orange pointer shadow-4" v-on:click="exportics">Export</a>
+            <a id="exportbutton" class="f4 b grow no-underline br-pill ph3 pv2 dib bg-orange pointer shadow-4" v-on:click="exportics">Export</a>
         </div>
     </article>
 
@@ -158,6 +158,8 @@
             <iframe class="airtable-embed" src="https://airtable.com/embed/shrW14MRxmsxrhPU0?backgroundColor=orange"
                 frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
         </div>
+
+        <p class="navy mt3 f7">Made with ☕ and without 😴 in New Haven</p>
     </article>
 
     <script src="buildpost.js"></script>
