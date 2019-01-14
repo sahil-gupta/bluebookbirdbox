@@ -68,46 +68,70 @@ function run() {
                 });
 
                 const DATEA = moment('2019-01-14');
-                const DATEB = moment('2019-04-26');
+                // const DATEB = moment('2019-04-26');
                 const DIFF = 102;
 
                 for (var i = 0; i <= DIFF; i++) {
-                    var thisdate = DATEA.clone().add(i, 'days');
-                    var dayofweek = thisdate.format('dddd');
+                    var thedate = DATEA.clone().add(i, 'days');
+                    var theday = thedate.format('dddd');
 
+                    if (thedate.unix() === moment('2019-01-18').unix()) {
+                        theday = 'Monday';
+                    } else if (thedate.unix() === moment('2019-01-21').unix()) {
+                        continue;
+                    } else if (thedate.unix() >= moment('2019-03-09').unix() && thedate.unix() < moment('2019-03-25').unix()) {
+                        continue;
+                    }
+
+                    // loop through chosen courses
                     for (var j = 0; j < this.chosens.length; j++) {
+                        var thecourse = this.chosens[j];
+                        var thetimesbyday = thecourse.timesbyday;
 
-                        var RR = this.chosens[j];
-
-                        var timesbyday = RR.timesbyday;
-
-                        if (dayofweek in timesbyday) {
-                            
+                        if (!(theday in thetimesbyday)) {
+                            continue;
                         }
 
-                        var thislocation = 'asdf';
-                        var thisstart;
-                        var thisend;
-
-                        cal.createEvent({
-                            start: thistart,
-                            end: thisend,
-                            timestamp: moment(),
-                            summary: [RR.subject, RR.number].join(' '),
-                            description: [RR.long_title, RR.subject + ' ' + RR.number + ' (' + RR.section + ')', RR.professors.join(', '), RR.description].join(' / '),
-                            location: thislocation,
-                            allDay: false
-                        });
+                        var thesessions = thetimesbyday[theday];
+                        for (var k = 0; k < thesessions.length; k++) {
+                            var thesess = thesessions[k];
+                            cal.createEvent({
+                                start: moment([2019, thedate.month(), thedate.date(), thesess.starthour, thesess.startmin]),
+                                end: moment([2019, thedate.month(), thedate.date(), thesess.endhour, thesess.endmin]),
+                                summary: [thecourse.subject, thecourse.number].join(' '),
+                                description: [thecourse.long_title, thecourse.subject + ' ' + thecourse.number + ' (' + thecourse.section + ')', thecourse.professors.join(', '), thecourse.description].join(' / '),
+                                location: thesess.location,
+                                allDay: false
+                            });
+                        }
                     }
                 }
 
-                // for every day in teh semester
-                //   loop through all the classes
-                //   check if it's supposed to be on that day
-                //   if it is and there are no edge cases
-                // add it including all details
-                // add all the special holidays
-
+                cal.createEvent({
+                    start: moment('2019-01-18'),
+                    summary: 'Monday Classes',
+                    allDay: true
+                });
+                cal.createEvent({
+                    start: moment('2019-03-09'),
+                    summary: 'Spring Recess Begins',
+                    allDay: true
+                });
+                cal.createEvent({
+                    start: moment('2019-03-24'),
+                    summary: 'Spring Recess Ends',
+                    allDay: true
+                });
+                cal.createEvent({
+                    start: moment('2019-04-26'),
+                    summary: 'Last Day of Classes',
+                    allDay: true
+                });
+                cal.createEvent({
+                    start: moment('2019-05-08'),
+                    summary: 'Last Day of Exams',
+                    allDay: true
+                });
 
                 var calstring = cal.toString();
                 calstring = calstring.replace(/(?:\r\n|\r|\n)/g, '%0A');
