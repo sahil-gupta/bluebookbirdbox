@@ -126,13 +126,15 @@
 
         <div class="dib v-top w-40">
             <p v-for="r1 in searchresults" class="f5 mt2 mb0 pa2 fw6 link dim pointer" v-on:click="chooseresult(r1)">
-                {{ [r1.subject + ' ' + r1.number + ' (' + r1.section + ')', r1.long_title, r1.professors.join(', ')].join(' / ') }}
+                {{ [r1.subject + ' ' + r1.number + (r1.section === '1' ? '' : ' (' + r1.section + ')'), r1.professors.join(', ')].join(' / ') }}
+                <br>
+                {{ r1.long_title }} 
             </p>
         </div>
 
         <div class="dib v-top w-40 bl bw2 pl4 pv2 mt3">
             <p v-for="r2 in chosens" class="f5 mt0 mb2 pa2 fw6 link dim pointer white" v-on:click="removechosen(r2)">
-                {{ [r2.subject + ' ' + r2.number + ' (' + r2.section + ')', r2.long_title, r2.professors.join(', ')].join(' / ') }}
+                {{ r2.subject + ' ' + r2.number }}
             </p>
             <a v-if="chosens.length>0" id="exportbutton" class="f5 b grow no-underline br-pill ph3 pv2 dib bg-green white pointer shadow-4 ml2" v-on:click="exportics">Export Cal</a>
             <div v-else>
